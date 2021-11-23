@@ -28,8 +28,10 @@ public class RoboSteuerung extends Thread
     {
         while(true)
         {
-
-            sehrVorsichtigerSchritt();
+            if (!robo.IstWand())
+            {
+               sehrVorsichtigerSchritt();
+            }
             robo.RechtsDrehen();
             robo.RechtsDrehen();
         }
@@ -38,7 +40,7 @@ public class RoboSteuerung extends Thread
     public void vorsichtigerSchritt()
     {
 
-        if(!robo.IstRoboter() && !robo.IstWand())
+        if(!robo.IstRoboter())
         {
             robo.Schritt();
         }
@@ -48,7 +50,7 @@ public class RoboSteuerung extends Thread
     {
         if(signal.testenUndSperren())
         {
-            if(!robo.IstRoboter() && !robo.IstWand())
+            if(!robo.IstRoboter())
             {
                 robo.Schritt();
             }
